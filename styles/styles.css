@@ -1,0 +1,27 @@
+:root{
+--background-color : #FBFBFB;
+--secondary-color : #E8F9FF;
+--first-color: #C4D9FF;
+--thrid-color: #C5BAFF;
+}
+
+.lora {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "lora";
+}
+
+
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
