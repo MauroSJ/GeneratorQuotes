@@ -33,6 +33,13 @@ body{
     align-items: center;
 }
 
+.flex-container__box{
+  border: solid 2px var(--thrid-color);
+  padding: 50px 150px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+}
+
 .flex-container__box-author-name{
   color: var(--first-color);
   font-size: 3rem;
