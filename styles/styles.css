@@ -18,34 +18,46 @@
     font-family: "lora";
 }
 
-body{
-  background-image: url("../assets/images/background-street.png") ;
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    width: 100dvw ;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.container__background{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80dvh;
+  min-width: 80dvw ;
+  background-image: url("../assets/images/background-street-2.png") ;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: auto;
 }
 
-.flex-container{
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
-    justify-content: center;
-    align-items: center;
+
+.container__box:hover{
+
+  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  min-width: 80dvw ;
 }
 
-.flex-container__box{
-  border: solid 2px var(--thrid-color);
-  padding: 50px 150px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 20px;
-}
-
-.flex-container__box-author-name{
-  color: var(--first-color);
-  font-size: 3rem;
-}
-
-.flex-container__box-text-quotes{
+.container__box-text-quotes{
   color: var(--secondary-color);
   font-style: italic;
+  font-size: 1.5rem;
 }
+
+.container__box-author-name{
+  color: var(--first-color);
+  font-size: 1rem;
+  text-align: end;
+}
+
