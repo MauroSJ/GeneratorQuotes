@@ -2,7 +2,7 @@ console.log('funncionando')
 
 // const API_URL = "https://zenquotes.io/api/quotes/  el sevidor de la api no permite peticiones directas (es decir desde el navegador) por eso uso un proxy como intermediario.
 // " 
-const API_URL = "https://api.allorigins.win/get?url=https://zenquotes.io/api/random";
+const API_URL = "https://api.allorigins.win/get?url=https://zenquotes.io/api/today";
 const button = document.querySelector(".container-btn")
 
 async function getQuotes(url) {
