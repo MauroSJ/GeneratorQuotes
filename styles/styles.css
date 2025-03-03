@@ -42,8 +42,12 @@
 }
 
 
-.container__box:hover{
+.container__box{
+  display: flex;
+  flex-direction: column;
+}
 
+.container__box:hover{
   padding: 50px;
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -59,4 +63,19 @@
   font-size: 1rem;
   text-align: end;
 }
+
+.container-btn{
+  width: 30%;
+  background-color: transparent;
+  color: var(--background-color);
+  border: none;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.container-btn:hover{
+  color: var(--first-color);
+  border-bottom: 1px solid var(--first-color);
+}
+
 
