@@ -45,6 +45,7 @@
 .container__box{
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s linear, padding 0.5s ease;
 }
 
 .container__box:hover{
@@ -71,11 +72,12 @@
   border: none;
   align-self: center;
   margin-top: 20px;
+  transition: box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .container-btn:hover{
   color: var(--first-color);
-  border-bottom: 1px solid var(--first-color);
+  box-shadow: inset 0px -1px 0px var(--first-color);
 }
 
 
