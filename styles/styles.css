@@ -42,8 +42,13 @@
 }
 
 
-.container__box:hover{
+.container__box{
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s linear, padding 0.5s ease;
+}
 
+.container__box:hover{
   padding: 50px;
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -59,4 +64,20 @@
   font-size: 1rem;
   text-align: end;
 }
+
+.container-btn{
+  width: 30%;
+  background-color: transparent;
+  color: var(--background-color);
+  border: none;
+  align-self: center;
+  margin-top: 20px;
+  transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.container-btn:hover{
+  color: var(--first-color);
+  box-shadow: inset 0px -1px 0px var(--first-color);
+}
+
 
