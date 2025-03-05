@@ -39,6 +39,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: auto;
+  border-radius: 20px;
 }
 
 
@@ -50,10 +51,12 @@
   max-height: 70dvw ;
   margin: 40px;
   padding: 20px 10px;
+  border-radius: 20px;
 }
 
 .container__box:hover{
   background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
 }
 
 .container__box-text-quotes{
