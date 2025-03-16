@@ -19,7 +19,7 @@ async function getQuotes(url) {
 }
 
 
-
+getQuotes(API_URL)
 button.addEventListener("click", ()=>{
     getQuotes(API_URL)
 })
