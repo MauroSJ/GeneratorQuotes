@@ -13,6 +13,7 @@ const button = document.querySelector(".container-btn")
 const API_URL = "https://api.allorigins.win/get?url=https://zenquotes.io/api/today";
 
 async function getQuotes(url) {
+
     try {
         const response = await fetch(url);
         console.log("Estado de la respuesta:", response.status);
@@ -22,9 +23,34 @@ async function getQuotes(url) {
         console.log(arrayQuotes)
                                         
         let author = arrayQuotes[0].a
-        let quotes = arrayQuotes[0].q
+        let quote = arrayQuotes[0].q
 
-        textQuotes.textContent = `${quotes}`;
+        //GUARDAR FRASE Y AUTOR EN LOCALSTORAGE
+        let quotes = []
+
+        let authorAndQuote = {
+            author,
+            quote
+        }
+
+        let quotesFromStorage = localStorage.getItem("quotes")
+        quotesFromStorage = JSON.parse(quotesFromStorage)
+        console.log(quotesFromStorage)
+
+        if (quotesFromStorage == null){
+            quotes.push(authorAndQuote)
+            localStorage.setItem("quotes", JSON.stringify(quotes))
+        }else if(quotesFromStorage.length == 0 && quotesFromStorage.length <= 5){
+            quotes.push(authorAndQuote)
+            localStorage.setItem("quotes", JSON.stringify(quotes))
+        }
+
+
+
+
+
+        //MUESTRO FRASE Y AUTOR EN PANTALLA
+        textQuotes.textContent = `${quote}`;
         authorName.textContent = `${author}`;
 
     } catch (error){
@@ -33,7 +59,7 @@ async function getQuotes(url) {
 }
 
 
-getQuotes(API_URL)
+// getQuotes(API_URL)
 button.addEventListener("click", ()=>{
     getQuotes(API_URL)
     console.log('ando')
