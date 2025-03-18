@@ -3,6 +3,7 @@
 --secondary-color : #E8F9FF;
 --first-color: #C4D9FF;
 --thrid-color: #C5BAFF;
+--dark-color: #000;
 }
 
 .lora {
@@ -35,7 +36,7 @@
   align-items: center;
   height: 80dvh;
   min-width: 80dvw ;
-  background-image: url("../assets/images/background-street-2.png") ;
+  background-image: url("../assets/images/background-3.png") ;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: auto;
@@ -54,13 +55,9 @@
   border-radius: 20px;
 }
 
-.container__box:hover{
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-}
 
 .container__box-text-quotes{
-  color: var(--secondary-color);
+  color: var(--dark-color);
   font-style: italic;
   font-size: 1.5rem;
   width: fit-content;
@@ -70,7 +67,7 @@
 }
 
 .container__box-author-name{
-  color: var(--first-color);
+  color: var(--dark-color);
   font-size: 1rem;
   text-align: end;
 }
@@ -78,16 +75,12 @@
 .container-btn{
   width: 30%;
   background-color: transparent;
-  color: var(--background-color);
+  color: var(--dark-color);
   border: none;
   align-self: center;
   margin-top: 20px;
   transition: box-shadow 0.3s ease, color 0.3s ease;
 }
 
-.container-btn:hover{
-  color: var(--first-color);
-  box-shadow: inset 0px -1px 0px var(--first-color);
-}
 
 
