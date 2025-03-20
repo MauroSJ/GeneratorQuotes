@@ -15,43 +15,48 @@ const API_URL = "https://api.allorigins.win/get?url=https://zenquotes.io/api/tod
 async function getQuotes(url) {
 
     try {
-        const response = await fetch(url);
-        console.log("Estado de la respuesta:", response.status);
-        const datos = await response.json()
-        console.log(datos);
-        const arrayQuotes = JSON.parse(datos.contents)  //convierto la cadena devuelta en array
-        console.log(arrayQuotes)
-                                        
-        let author = arrayQuotes[0].a
-        let quote = arrayQuotes[0].q
 
-        //GUARDAR FRASE Y AUTOR EN LOCALSTORAGE
-        let quotes = []
-
-        let authorAndQuote = {
-            author,
-            quote
-        }
+        //VERIFICAMOS SI EL LOCAL STORAGE CONTIENE MENOS DE 5 FRASES
 
         let quotesFromStorage = localStorage.getItem("quotes")
         quotesFromStorage = JSON.parse(quotesFromStorage)
         console.log(quotesFromStorage)
 
-        if (quotesFromStorage == null){
+        if (quotesFromStorage == null || quotesFromStorage.length < 5 ){
+
+            //LLAMADO DE API PARA OBTENER UNA NUEVA FRASE
+            const response = await fetch(url);
+            console.log("Estado de la respuesta:", response.status);
+            const datos = await response.json()
+            console.log(datos);
+            const arrayQuotes = JSON.parse(datos.contents)  //convierto la cadena devuelta en array
+            console.log(arrayQuotes)
+                          
+            let author = arrayQuotes[0].a
+            let quote = arrayQuotes[0].q
+
+            //GUARDAR FRASE Y AUTOR EN LOCALSTORAGE
+            let quotes = []
+
+            let authorAndQuote = {
+                author,
+                quote
+            }
+
             quotes.push(authorAndQuote)
             localStorage.setItem("quotes", JSON.stringify(quotes))
-        }else if(quotesFromStorage.length == 0 && quotesFromStorage.length <= 5){
-            quotes.push(authorAndQuote)
-            localStorage.setItem("quotes", JSON.stringify(quotes))
+
+            //MUESTRO FRASE Y AUTOR EN PANTALLA
+            textQuotes.textContent = `${quote}`;
+            authorName.textContent = `${author}`;
+
+        }else if(quotesFromStorage.length = 5){
+            let randomQuotes = quotesFromStorage[Math.random()*5];
+            textQuotes.textContent = randomQuotes.quote
+            authorName.textContent = randomQuotes.author;
         }
 
-
-
-
-
-        //MUESTRO FRASE Y AUTOR EN PANTALLA
-        textQuotes.textContent = `${quote}`;
-        authorName.textContent = `${author}`;
+        
 
     } catch (error){
         console.log('Error de la peticion', error)
