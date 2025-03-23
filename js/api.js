@@ -36,7 +36,7 @@ async function getQuotes(url) {
             let quote = arrayQuotes[0].q
 
             //GUARDAR FRASE Y AUTOR EN LOCALSTORAGE
-            let quotes = []
+            const quotes = JSON.parse(localStorage.getItem("quotes")) || []
 
             let authorAndQuote = {
                 author,
@@ -44,6 +44,7 @@ async function getQuotes(url) {
             }
 
             quotes.push(authorAndQuote)
+            console.log(localStorage.getItem("quotes"))
             localStorage.setItem("quotes", JSON.stringify(quotes))
 
             //MUESTRO FRASE Y AUTOR EN PANTALLA
@@ -51,7 +52,9 @@ async function getQuotes(url) {
             authorName.textContent = `${author}`;
 
         }else if(quotesFromStorage.length = 5){
-            let randomQuotes = quotesFromStorage[Math.random()*5];
+            let randomQuotes = JSON.parse(localStorage.getItem("quotes")); 
+            randomQuotes = randomQuotes[Math.floor(Math.random()* randomQuotes.length)]
+            
             textQuotes.textContent = randomQuotes.quote
             authorName.textContent = randomQuotes.author;
         }
