@@ -53,7 +53,8 @@ async function getQuotes(url) {
 
         }else if(quotesFromStorage.length = 5){
             let randomQuotes = JSON.parse(localStorage.getItem("quotes")); 
-            randomQuotes = randomQuotes[Math.floor(Math.random()* randomQuotes.length)]
+            randomQuotes = randomQuotes[Math.floor(Math.random()* randomQuotes.length)];
+            
             
             textQuotes.textContent = randomQuotes.quote
             authorName.textContent = randomQuotes.author;
