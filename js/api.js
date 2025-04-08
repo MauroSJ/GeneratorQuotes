@@ -42,10 +42,18 @@ async function getQuotes(url) {
                 author,
                 quote
             }
+            
+            //BUSCO SI EXISTE UNA FRASE IGUAL EN LOCAL STORAGE
+            const exist = quotes.some((element)=>element.quote === authorAndQuote.quote 
+            )
 
-            quotes.push(authorAndQuote)
-            console.log(localStorage.getItem("quotes"))
-            localStorage.setItem("quotes", JSON.stringify(quotes))
+            if(exist){
+                console.log("Existen dos frases iguales")
+            }   else{
+                quotes.push(authorAndQuote)
+                localStorage.setItem("quotes" , JSON.stringify(quotes))
+            }
+
 
             //MUESTRO FRASE Y AUTOR EN PANTALLA
             textQuotes.textContent = `${quote}`;
