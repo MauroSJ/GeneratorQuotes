@@ -18,9 +18,11 @@ async function getQuotes(url) {
 
         //VERIFICAMOS SI EL LOCAL STORAGE CONTIENE MENOS DE 5 FRASES
 
-        let quotesFromStorage = localStorage.getItem("quotes")
-        quotesFromStorage = JSON.parse(quotesFromStorage)
+        let quotesFromStorage = JSON.parse(localStorage.getItem("quotes"))
         console.log(quotesFromStorage)
+
+        let authorAndQuote = {}
+        
 
         if (quotesFromStorage == null || quotesFromStorage.length < 5 ){
 
@@ -38,7 +40,7 @@ async function getQuotes(url) {
             //GUARDAR FRASE Y AUTOR EN LOCALSTORAGE
             const quotes = JSON.parse(localStorage.getItem("quotes")) || []
 
-            let authorAndQuote = {
+            authorAndQuote = {
                 author,
                 quote
             }
@@ -60,7 +62,35 @@ async function getQuotes(url) {
             authorName.textContent = `${author}`;
 
         }else if(quotesFromStorage.length = 5){
-            let randomQuotes = JSON.parse(localStorage.getItem("quotes")); 
+            let randomQuotes = JSON.parse(localStorage.getItem("quotes"));
+            randomQuotes.shift()
+
+            const response = await fetch(url);
+            console.log("Estado de la respuesta:", response.status);
+            const datos = await response.json()
+            console.log(datos);
+            const arrayQuotes = JSON.parse(datos.contents)  //convierto la cadena devuelta en array
+            console.log(arrayQuotes)
+                          
+            let author = arrayQuotes[0].a
+            let quote = arrayQuotes[0].q
+
+
+            authorAndQuote =  {
+                author,
+                quote
+            }
+
+            randomQuotes.push(authorAndQuote)
+            localStorage.setItem('quotes', JSON.stringify(randomQuotes))
+
+            // randomQuotes.shift() aqui trato de quitar un elemento y agregar el nuevo para actualizar el local con nuevas frases
+            // let authorAndQuote = {
+            //     author,
+            //     quote
+            // }
+            // randomQuotes.push(authorAndQuote)
+            // localStorage.setItem('quotes', JSON.stringify(randomQuotes))
             randomQuotes = randomQuotes[Math.floor(Math.random()* randomQuotes.length)];
             
             
